@@ -1,27 +1,28 @@
 #include "class.h"
-#include "windows.h"
 using namespace std;
 
 
 void RubiksCube::makeWhiteCross()
 {
-    while (blueSideTile == false || redSideTile == false || greenSideTile == false || orangeSideTile == false)
+    bluePiece = false, redPiece = false, greenPiece = false, orangePiece = false;
+    while (bluePiece == false || redPiece == false || greenPiece == false || orangePiece == false)
     {
-        whiteCrossStage();
-        if(!blueSideTile)
-            cout << "blue" << endl;
-        if(!redSideTile)
-            cout << "red" << endl;
-        if(!greenSideTile)
-            cout << "green" << endl;
-        if(!orangeSideTile)
-            cout << "orange" << endl;
-        showCube();
-        Sleep(5000);
+        whiteCrossStages();
+        // if(!bluePiece )
+        //     cout << "blue" << endl;
+        // if(!redPiece )
+        //     cout << "red" << endl;
+        // if(!greenPiece )
+        //     cout << "green" << endl;
+        // if(!orangePiece )
+        //     cout << "orange" << endl;
+        // showCube();
+        // Sleep(5000);
     }
     return;
 }
-void RubiksCube::whiteCrossStage()
+
+void RubiksCube::whiteCrossStages()
 {    
     if(downSide[0][1] == white || downSide[1][2] == white || downSide[2][1] == white || downSide[1][0] == white)
     {
@@ -30,18 +31,18 @@ void RubiksCube::whiteCrossStage()
             switch (frontSide[2][1])
             {
                 case blue:
-                    blueSideTile = true;
+                    bluePiece = true;
                     break;;
                 case red:
-                    redSideTile = true;
+                    redPiece = true;
                     rotateCube("F2 U' R2");
                     break;
                 case green:
-                    greenSideTile = true;
+                    greenPiece = true;
                     rotateCube("F2 U2 B2");
                     break;
                 case orange:
-                    orangeSideTile = true;
+                    orangePiece = true;
                     rotateCube("F2 U L2");
                     break;
                 default:
@@ -54,18 +55,18 @@ void RubiksCube::whiteCrossStage()
             switch (rightSide[2][1])
             {
                 case blue:
-                    blueSideTile = true;                    
+                    bluePiece = true;                    
                     rotateCube("R2 U F2");
                     break;
                 case red:
-                    redSideTile = true;
+                    redPiece = true;
                     break;
                 case green:
-                    greenSideTile = true;
+                    greenPiece = true;
                     rotateCube("R2 U' B2");
                     break;
                 case orange:
-                    orangeSideTile = true;
+                    orangePiece = true;
                     rotateCube("R2 U2 L2");
                     break;
                 default:
@@ -78,18 +79,18 @@ void RubiksCube::whiteCrossStage()
             switch (backSide[2][1])
             {
                 case blue:
-                    blueSideTile = true;
+                    bluePiece = true;
                     rotateCube("B2 U2 F2");
                     break;
                 case red:
-                    redSideTile = true;
+                    redPiece = true;
                     rotateCube("B2 U R2");
                     break;
                 case green:
-                    greenSideTile = true;
+                    greenPiece = true;
                     break;
                 case orange:
-                    orangeSideTile = true;
+                    orangePiece = true;
                     rotateCube("B2 U' L2");
                     break;
                 default:
@@ -102,19 +103,19 @@ void RubiksCube::whiteCrossStage()
             switch (leftSide[2][1])
             {
                 case blue:
-                    blueSideTile = true;
+                    bluePiece = true;
                     rotateCube("L2 U' F2");
                     break;
                 case red:
-                    redSideTile = true;
+                    redPiece = true;
                     rotateCube("L2 U2 R2");
                     break;
                 case green:
-                    greenSideTile = true;
+                    greenPiece = true;
                     rotateCube("L2 U B2");
                     break;
                 case orange:
-                    orangeSideTile = true;
+                    orangePiece = true;
                     break;
                 default:
                     cout << "Error, other color, stage 1.4" << endl;
@@ -129,19 +130,19 @@ void RubiksCube::whiteCrossStage()
             switch (backSide[0][1])
             {
                 case blue:
-                    blueSideTile = true;
+                    bluePiece = true;
                     rotateCube("U2 F2");
                     break;;
                 case red:
-                    redSideTile = true;
+                    redPiece = true;
                     rotateCube("U R2");
                     break;
                 case green:
-                    greenSideTile = true;
+                    greenPiece = true;
                     rotateCube("B2");
                     break;
                 case orange:
-                    orangeSideTile = true;
+                    orangePiece = true;
                     rotateCube("U' L2");
                     break;
                 default:
@@ -154,19 +155,19 @@ void RubiksCube::whiteCrossStage()
             switch (rightSide[0][1])
             {
                 case blue:
-                    blueSideTile = true;
+                    bluePiece = true;
                     rotateCube("U F2");
                     break;;
                 case red:
-                    redSideTile = true;
+                    redPiece = true;
                     rotateCube("R2");
                     break;
                 case green:
-                    greenSideTile = true;
+                    greenPiece = true;
                     rotateCube("U' B2");
                     break;
                 case orange:
-                    orangeSideTile = true;
+                    orangePiece = true;
                     rotateCube("U2 L2");
                     break;
                 default:
@@ -179,19 +180,19 @@ void RubiksCube::whiteCrossStage()
             switch (frontSide[0][1])
             {
                 case blue:
-                    blueSideTile = true;
+                    bluePiece = true;
                     rotateCube("F2");
                     break;;
                 case red:
-                    redSideTile = true;
+                    redPiece = true;
                     rotateCube("U' R2");
                     break;
                 case green:
-                    greenSideTile = true;
+                    greenPiece = true;
                     rotateCube("U2 B2");
                     break;
                 case orange:
-                    orangeSideTile = true;
+                    orangePiece = true;
                     rotateCube("U L2");
                     break;
                 default:
@@ -204,19 +205,19 @@ void RubiksCube::whiteCrossStage()
             switch (leftSide[2][1])
             {
                 case blue:
-                    blueSideTile = true;
+                    bluePiece = true;
                     rotateCube("U' F2");
                     break;;
                 case red:
-                    redSideTile = true;
+                    redPiece = true;
                     rotateCube("U2 R2");
                     break;
                 case green:
-                    greenSideTile = true;
+                    greenPiece = true;
                     rotateCube("U B2");
                     break;
                 case orange:
-                    orangeSideTile = true;
+                    orangePiece = true;
                     rotateCube("L2");
                     break;
                 default:

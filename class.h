@@ -23,11 +23,14 @@ private:
     void B(), Bprim();
     void D(), Dprim();
 
-    bool blueSideTile = false, redSideTile = false, greenSideTile = false, orangeSideTile = false;
+    bool bluePiece, redPiece, greenPiece, orangePiece;
     void makeWhiteCross();
-    void whiteCrossStage();
+    void whiteCrossStages();
+
+    void makeFirstLayer();
+    void firstLayerStages();
 public:
-    RubiksCube(int front, int top);
+    RubiksCube(int front = blue, int top = yellow);
     void showCube();
     void setCubeToSolved(int front, int top);
     void rotateCube(std::string moves);

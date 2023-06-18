@@ -101,6 +101,12 @@ void RubiksCube::setCubeToSolved(int front, int top)
         back = orange;
         left = green;
     } 
+    if(front == blue && top == yellow)
+    {
+        right = red;
+        back = green;
+        left = orange;
+    } 
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
             downSide[i][j] = down;
@@ -123,7 +129,8 @@ void RubiksCube::setCubeToSolved(int front, int top)
     return;
 }
 
-RubiksCube::RubiksCube(int front = blue, int top = yellow)
+
+RubiksCube::RubiksCube(int front, int top)
 {
     setCubeToSolved(front, top);
     return;
