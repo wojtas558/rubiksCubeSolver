@@ -8,8 +8,9 @@ int main()
 {
     RubiksCube cube;  
     cube.setCubeToSolved();    
-    cube.rotateCube("F' U2 F R' U F R F2 U2 F U2 R2 F R2 U");
+    cube.rotateCube("U' F' R2 F' U2 F U2 F' U' R' U' R2 F U2 F");
     cube.showCube();
+    getch();
     cube.solveCube();
     cube.showCube();
     getch();return 0;

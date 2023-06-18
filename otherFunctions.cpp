@@ -1,5 +1,4 @@
 #include "class.h"
-#include <conio.h>
 using namespace std;
 
 string RubiksCube::showTile(int color)
@@ -57,7 +56,7 @@ void RubiksCube::showCube()
     for(int i = 0;i < 3;i++)
     {
         cout << "\t";
-        cout << showTile(bottomSide[i][0]) << "-" << showTile(bottomSide[i][1]) << "-" << showTile(bottomSide[i][2]);     
+        cout << showTile(downSide[i][0]) << "-" << showTile(downSide[i][1]) << "-" << showTile(downSide[i][2]);     
         cout << endl;
     }
     cout << endl;
@@ -75,7 +74,7 @@ void RubiksCube::setCubeToSolved()
 {
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
-            bottomSide[i][j] = white;
+            downSide[i][j] = white;
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
             frontSide[i][j] = blue;
