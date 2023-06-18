@@ -70,33 +70,62 @@ void RubiksCube::showCube()
     return;
 }
 
-void RubiksCube::setCubeToSolved()
+void RubiksCube::setCubeToSolved(int front, int top)
 {
+    int down, right, back, left;
+    if(top == yellow)
+        down = white;
+    else if(top == white)
+        down = yellow;
+    if(front == blue && top == white)
+    {
+        right = orange;
+        back = green;
+        left = red;
+    } 
+    else if(front == orange && top == white)
+    {
+        right = green;
+        back = red;
+        left = blue;
+    }
+    else if(front == green && top == white)
+    {
+        right = red;
+        back = blue;
+        left = orange;
+    } 
+    else if(front == red && top == white)
+    {
+        right = blue;
+        back = orange;
+        left = green;
+    } 
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
-            downSide[i][j] = white;
+            downSide[i][j] = down;
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
-            frontSide[i][j] = blue;
+            frontSide[i][j] = front;
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
-            rightSide[i][j] = red;
+            rightSide[i][j] = right;
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
-            backSide[i][j] = green;
+            backSide[i][j] = back;
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
-            leftSide[i][j] = orange;
+            leftSide[i][j] = left;
     for(int i = 0; i < 3; i++)
         for(int j = 0; j < 3; j++)
-            topSide[i][j] = yellow;
+            topSide[i][j] = top;
 
     return;
 }
 
-RubiksCube::RubiksCube()
+RubiksCube::RubiksCube(int front = blue, int top = yellow)
 {
-    setCubeToSolved();
+    setCubeToSolved(front, top);
     return;
 }
 

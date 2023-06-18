@@ -16,7 +16,8 @@ void RubiksCube::makeWhiteCross()
             cout << "green" << endl;
         if(!orangeSideTile)
             cout << "orange" << endl;
-        Sleep(500);
+        showCube();
+        Sleep(5000);
     }
     return;
 }

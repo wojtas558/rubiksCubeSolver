@@ -2,8 +2,6 @@
 #include <conio.h> 
 using namespace std;
 
-//ADD D, D' MOVES
-
 //((i*2)+2)%3 == {2, 1, 0}
 
 void RubiksCube::R()
@@ -211,20 +209,20 @@ void RubiksCube::B()
     backSide[1][0] = backSide[0][1];
     backSide[0][1] = backSide[1][2];
     backSide[1][2] = backSide[2][1];
-    backSide[2][1] = temp;
+    backSide[2][1] = temp;  
 }
 
 void RubiksCube::Bprim()
 {
     int temp;
     for(int i = 0;i < 3;i++)
-    {
+    {        
         temp = topSide[0][i];
         topSide[0][i] = leftSide[((i*2)+2)%3][0];
         leftSide[((i*2)+2)%3][0] = downSide[2][((i*2)+2)%3];
         downSide[2][((i*2)+2)%3] = rightSide[i][2];
         rightSide[i][2] = temp;
-    }
+    }    
     temp = backSide[0][0];
     backSide[0][0] = backSide[2][0];
     backSide[2][0] = backSide[2][2];
@@ -237,6 +235,52 @@ void RubiksCube::Bprim()
     backSide[0][1] = temp;
 }
 
+void RubiksCube::D()
+{
+    int temp;
+    for(int i = 0;i < 3;i++)
+    {
+        temp = frontSide[2][i];
+        frontSide[2][i] = leftSide[2][i];
+        leftSide[2][i] = backSide[2][((i*2)+2)%3];
+        backSide[2][((i*2)+2)%3] = rightSide[2][i];
+        rightSide[2][i] = temp;
+    }    
+    temp = downSide[0][0];
+    downSide[0][0] = downSide[2][0];
+    downSide[2][0] = downSide[2][2];
+    downSide[2][2] = downSide[0][2];
+    downSide[0][2] = temp;
+    temp = downSide[1][0];
+    downSide[1][0] = downSide[2][1];
+    downSide[2][1] = downSide[1][2];
+    downSide[1][2] = downSide[0][1];
+    downSide[0][1] = temp;
+}
+
+void RubiksCube::Dprim()
+{
+    int temp;
+    for(int i = 0;i < 3;i++)
+    {
+        temp = frontSide[2][i];
+        frontSide[2][i] = rightSide[2][i];
+        rightSide[2][i] = backSide[2][((i*2)+2)%3];
+        backSide[2][((i*2)+2)%3] = leftSide[2][i];
+        leftSide[2][i] = temp;
+    }
+    temp = downSide[0][0];
+    downSide[0][0] = downSide[0][2];
+    downSide[0][2] = downSide[2][2];
+    downSide[2][2] = downSide[2][0];
+    downSide[2][0] = temp;
+    temp = downSide[1][0];
+    downSide[1][0] = downSide[0][1];
+    downSide[0][1] = downSide[1][2];
+    downSide[1][2] = downSide[2][1];
+    downSide[2][1] = temp;
+}
+
 void RubiksCube::rotateCube(string moves)
 {
     string move = "";
@@ -244,6 +288,7 @@ void RubiksCube::rotateCube(string moves)
     for (int i = 0; i < moves.size(); i+=3)
     {
         move = moves.substr(i, 2);
+        // cout << "|" << move << "|" << endl;
         if(move == "R ")
         {
             i--;
@@ -269,6 +314,11 @@ void RubiksCube::rotateCube(string moves)
             i--;
             B();
         }
+        else if(move == "D ")
+        {
+            i--;
+            D();
+        }
         else if(move == "R'")
             Rprim();
         else if(move == "L'")
@@ -279,6 +329,8 @@ void RubiksCube::rotateCube(string moves)
             Uprim();
         else if(move == "B'")
             Bprim();
+        else if(move == "D'")
+            Dprim();
         else if(move == "R2")
         {
             R();
@@ -304,7 +356,14 @@ void RubiksCube::rotateCube(string moves)
             B();
             B();
         }  
+        else if(move == "D2")
+        {
+            D();
+            D();
+        }  
         else
             cout << "No move detected";
+        // showCube();
+        // getch();
     }    
 }
