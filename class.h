@@ -22,13 +22,14 @@ private:
     void L(), Lprim();
     void F(), Fprim();
     void U(), Uprim();
+    void makeWhiteCross();
 public:
     RubiksCube();
     void showCube();
     void setCubeToSolved();
     void rotateCube(std::string moves);
 
-    void makeWhiteCross();
+    void solveCube();
 };
 
 #endif

@@ -1,5 +1,7 @@
 #include "class.h"
 
+//ADD B MOVE AND D MOVE 
+
 void RubiksCube::R()
 {
     int temp;
@@ -183,4 +185,64 @@ void RubiksCube::Fprim()
     frontSide[0][1] = frontSide[1][2];
     frontSide[1][2] = frontSide[2][1];
     frontSide[2][1] = temp;
+}
+
+void RubiksCube::rotateCube(string moves)
+{
+    string move = "";
+    moves += " ";
+    for (int i = 0; i < moves.size(); i+=3)
+    {
+        move = moves.substr(i, 2);
+        if(move == "R ")
+        {
+            i--;
+            R();
+        }
+        else if(move == "L ")
+        {
+            i--;
+            L();
+        }
+        else if(move == "F ")
+        {
+            i--;
+            F();
+        }
+        else if(move == "U ")
+        {
+            i--;
+            U();
+        }
+        else if(move == "R'")
+            Rprim();
+        else if(move == "L'")
+            Lprim();
+        else if(move == "F'")
+            Fprim();
+        else if(move == "U'")
+            Uprim();
+        else if(move == "R2")
+        {
+            R();
+            R();
+        }
+        else if(move == "L2")
+        {
+            L();
+            L();
+        }
+        else if(move == "F2")
+        {
+            F();
+            F();
+        }
+        else if(move == "U2")
+        {
+            U();
+            U();
+        }  
+        else
+            cout << "No move detected";
+    }    
 }

@@ -15,7 +15,7 @@ string RubiksCube::showTile(int color)
             printf("%c[%dm", 0x1B, 39);
             break;
         case red:
-            printf("%c[%d;2;255;0;0m#", 0x1B, 38);
+            printf("%c[%d;2;255;0;0m#", 0x1B, 38);//zmienic na jedna funkcje z kolorkiem rgb jako argument
             printf("%c[%dm", 0x1B, 39);
             break;
         case green:
@@ -67,6 +67,8 @@ void RubiksCube::showCube()
         cout << showTile(backSide[i][0]) << "-" << showTile(backSide[i][1]) << "-" << showTile(backSide[i][2]);        
         cout << endl;
     }        
+
+    return;
 }
 
 void RubiksCube::setCubeToSolved()
@@ -93,70 +95,14 @@ void RubiksCube::setCubeToSolved()
     return;
 }
 
-void RubiksCube::rotateCube(string moves)
-{
-    string move = "";
-    moves += " ";
-    for (int i = 0; i < moves.size(); i+=3)
-    {
-        move = moves.substr(i, 2);
-        cout << "|" << move << "|" << endl;
-        if(move == "R ")
-        {
-            i--;
-            R();
-        }
-        else if(move == "L ")
-        {
-            i--;
-            L();
-        }
-        else if(move == "F ")
-        {
-            i--;
-            F();
-        }
-        else if(move == "U ")
-        {
-            i--;
-            U();
-        }
-        else if(move == "R'")
-            Rprim();
-        else if(move == "L'")
-            Lprim();
-        else if(move == "F'")
-            Fprim();
-        else if(move == "U'")
-            Uprim();
-        else if(move == "R2")
-        {
-            R();
-            R();
-        }
-        else if(move == "L2")
-        {
-            L();
-            L();
-        }
-        else if(move == "F2")
-        {
-            F();
-            F();
-        }
-        else if(move == "U2")
-        {
-            U();
-            U();
-        }  
-        else
-            cout << "No move detected";
-    }    
-}
-
 RubiksCube::RubiksCube()
 {
     setCubeToSolved();
     return;
 }
 
+void RubiksCube::solveCube()
+{
+    makeWhiteCross();
+    return;
+}
