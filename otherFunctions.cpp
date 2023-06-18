@@ -96,53 +96,61 @@ void RubiksCube::setCubeToSolved()
 void RubiksCube::rotateCube(string moves)
 {
     string move = "";
+    moves += " ";
     for (int i = 0; i < moves.size(); i+=3)
     {
         move = moves.substr(i, 2);
+        cout << "|" << move << "|" << endl;
         if(move == "R ")
         {
             i--;
-            R();cout << "R" << endl;
+            R();
+        }
+        else if(move == "L ")
+        {
+            i--;
+            L();
         }
         else if(move == "F ")
         {
             i--;
-            F();cout << "F" << endl;
+            F();
         }
         else if(move == "U ")
         {
             i--;
-            U();cout << "U" << endl;
+            U();
         }
+        else if(move == "R'")
+            Rprim();
+        else if(move == "L'")
+            Lprim();
+        else if(move == "F'")
+            Fprim();
+        else if(move == "U'")
+            Uprim();
         else if(move == "R2")
         {
-            R();showCube();
-            R();cout << "R2" << endl;
+            R();
+            R();
+        }
+        else if(move == "L2")
+        {
+            L();
+            L();
         }
         else if(move == "F2")
         {
-            F();showCube();
-            F();cout << "F2" << endl;
+            F();
+            F();
         }
         else if(move == "U2")
         {
-            U();showCube();
-            U();cout << "U2" << endl;
-        }
-        else if(move == "R'")
-        {
-            Rprim();cout << "R'" << endl;
-        }
-        else if(move == "F'")
-        {
-            Fprim();cout << "F'" << endl;
-        }
-        else if(move == "U'")
-        {
-            Uprim();cout << "U'" << endl;
-        }     
-        showCube();
-        getch();
+            U();
+            U();
+        }  
+        else
+            cout << "No move detected";
     }    
 }
 
