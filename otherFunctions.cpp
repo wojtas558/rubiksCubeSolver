@@ -149,5 +149,6 @@ void RubiksCube::solveCube()
     makeSecondLayer();
     showCube();
     getch();
+    makeYellowCross();
     return;
 }
