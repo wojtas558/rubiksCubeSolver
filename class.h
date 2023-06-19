@@ -31,9 +31,12 @@ private:
     void firstLayerStages();
 
     void makeSecondLayer();
-    
+
     void makeYellowCross();
     void permuteYellowCross();
+    bool checkCorners(int corner = 0);
+    void permuteYellowCorners();
+    void rotateYellowCorners();
 public:
     RubiksCube(int front = blue, int top = yellow);
     void showCube();

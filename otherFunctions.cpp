@@ -153,5 +153,8 @@ void RubiksCube::solveCube()
     showCube();
     getch();
     permuteYellowCross();
+    showCube();
+    getch();
+    permuteYellowCorners();
     return;
 }

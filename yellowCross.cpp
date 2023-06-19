@@ -31,7 +31,7 @@ void RubiksCube::permuteYellowCross()
     int rotations = 0;
     while(true)
     {   
-        // cout << rotations;
+        // cout << rotations << endl;
         // showCube();
         // getch();
         if(frontSide[0][1] == blue && rightSide[0][1] == red && backSide[0][1] && leftSide[0][1] == orange)
@@ -58,7 +58,7 @@ void RubiksCube::permuteYellowCross()
         }
         rotateCube("U");
         rotations++;
-        if(rotations == 3)
+        if(rotations == 4)
             rotateCube("U' R U2 R' U' R U' R'");
     }
     cout << "yellow cross permutation error";

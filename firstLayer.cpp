@@ -69,7 +69,7 @@ void RubiksCube::firstLayerStages()
                 greenPiece = true;
                 break;
             case 52://orange + blue
-                rotateCube("F R U R' F'");
+                rotateCube("R U R'");
                 orangePiece = true;
                 break;
             default:
