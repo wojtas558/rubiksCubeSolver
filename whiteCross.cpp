@@ -1,4 +1,5 @@
 #include "class.h"
+#include <windows.h>
 using namespace std;
 
 
@@ -32,7 +33,7 @@ void RubiksCube::whiteCrossStages()
             {
                 case blue:
                     bluePiece = true;
-                    break;;
+                    break;
                 case red:
                     redPiece = true;
                     rotateCube("F2 U' R2");
@@ -150,7 +151,7 @@ void RubiksCube::whiteCrossStages()
                     break;
             }
         }
-        if(topSide[1][2] == white)
+        else if(topSide[1][2] == white)
         {
             switch (rightSide[0][1])
             {
@@ -175,7 +176,7 @@ void RubiksCube::whiteCrossStages()
                     break;
             }
         }
-        if(topSide[2][1] == white)
+        else if(topSide[2][1] == white)
         {
             switch (frontSide[0][1])
             {
@@ -200,9 +201,9 @@ void RubiksCube::whiteCrossStages()
                     break;
             }
         }
-        if(topSide[1][0] == white)
+        else if(topSide[1][0] == white)
         {
-            switch (leftSide[2][1])
+            switch (leftSide[0][1])
             {
                 case blue:
                     bluePiece = true;
@@ -226,62 +227,62 @@ void RubiksCube::whiteCrossStages()
             }
         }
     }
-    if(frontSide[1][0] == white || frontSide[0][1] == white || frontSide[1][2])
+    if(frontSide[1][0] == white || frontSide[0][1] == white || frontSide[1][2] == white)
     {
         if(frontSide[1][0] == white)
         {
             rotateCube("L' U L");
         }
-        if(frontSide[0][1] == white)
+        else if(frontSide[0][1] == white)
         {
             rotateCube("F R U' R' F'");
         }
-        if(frontSide[1][2] == white)
+        else if(frontSide[1][2] == white)
         {
             rotateCube("R U R'");
         }
     }
-    if(rightSide[1][0] == white || rightSide[0][1] == white || rightSide[1][2])
+    if(rightSide[1][0] == white || rightSide[0][1] == white || rightSide[1][2] == white)
     {
         if(rightSide[1][0] == white)
         {
             rotateCube("F' U F");
         }
-        if(rightSide[0][1] == white)
+        else if(rightSide[0][1] == white)
         {
             rotateCube("R B U' B' R'");
         }
-        if(rightSide[1][2] == white)
+        else if(rightSide[1][2] == white)
         {
             rotateCube("B U B'");
         }
     }
-    if(backSide[1][0] == white || backSide[0][1] == white || backSide[1][2])
+    if(backSide[1][0] == white || backSide[0][1] == white || backSide[1][2] == white)
     {
         if(backSide[1][0] == white)
         {
             rotateCube("L U L'");
         }
-        if(backSide[0][1] == white)
+        else if(backSide[0][1] == white)
         {
             rotateCube("B L U' L' B'");
         }
-        if(backSide[1][2] == white)
+        else if(backSide[1][2] == white)
         {
             rotateCube("R' U R");
         }
     }
-    if(leftSide[1][0] == white || leftSide[0][1] == white || leftSide[1][2])
+    if(leftSide[1][0] == white || leftSide[0][1] == white || leftSide[1][2] == white)
     {
         if(leftSide[1][0] == white)
         {
             rotateCube("B' U B");
         }
-        if(leftSide[0][1] == white)
+        else if(leftSide[0][1] == white)
         {
             rotateCube("L F U' F' L'");
         }
-        if(leftSide[1][2] == white)
+        else if(leftSide[1][2] == white)
         {
             rotateCube("F U F'");
         }

@@ -8,7 +8,16 @@ void RubiksCube::makeFirstLayer()
     while (bluePiece == false || redPiece == false || greenPiece == false || orangePiece == false)
     {
         firstLayerStages();
-        Sleep(3000);
+        // if(!bluePiece )
+        //     cout << "blue" << endl;
+        // if(!redPiece )
+        //     cout << "red" << endl;
+        // if(!greenPiece )
+        //     cout << "green" << endl;
+        // if(!orangePiece )
+        //     cout << "orange" << endl;
+        // showCube();
+        // Sleep(1500);
     }
 }
 
@@ -120,6 +129,7 @@ void RubiksCube::firstLayerStages()
     }
     if(topSide[0][0] == white || topSide[0][2] == white || topSide[2][0] == white || topSide[2][2] == white)
     {
+        //yellow side
         if(topSide[0][0] == white)
         {
             if(downSide[2][0] != white)
@@ -131,27 +141,30 @@ void RubiksCube::firstLayerStages()
             }
             else if(downSide[2][2] != white)
             {
+                rotateCube("U");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U B U B' U'");
+                    rotateCube("B U B' U'");
                 }                
             }
             else if(downSide[0][2] != white)
             {
+                rotateCube("U2");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U2 R U R' U'");
+                    rotateCube("R U R' U'");
                 }                
             }
             else if(downSide[0][0] != white)
             {
+                rotateCube("U'");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U' F U F' U'");
+                    rotateCube("F U F' U'");
                 }                
             }
         }
-        if(topSide[0][2] == white)
+        else if(topSide[0][2] == white)
         {            
             if(downSide[2][2] != white)
             {
@@ -162,27 +175,30 @@ void RubiksCube::firstLayerStages()
             }
             else if(downSide[0][2] != white)
             {
+                rotateCube("U");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U R U R' U'");
+                    rotateCube("R U R' U'");
                 }                
             }
             else if(downSide[0][0] != white)
             {
+                rotateCube("U2");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U2 F U F' U'");
+                    rotateCube("F U F' U'");
                 }                
             }
             else if(downSide[2][0] != white)
             {
+                rotateCube("U'");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U' L U L' U'");
+                    rotateCube("L U L' U'");
                 }                
             }
         }
-        if(topSide[2][2] == white)
+        else if(topSide[2][2] == white)
         {            
             if(downSide[0][2] != white)
             {
@@ -193,27 +209,30 @@ void RubiksCube::firstLayerStages()
             }
             else if(downSide[0][0] != white)
             {
+                rotateCube("U");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U F U F' U'");
+                    rotateCube("F U F' U'");
                 }                
             }
             else if(downSide[2][0] != white)
             {
+                rotateCube("U2");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U2 L U L' U'");
+                    rotateCube("L U L' U'");
                 }                
             }
             else if(downSide[2][2] != white)
             {
+                rotateCube("U'");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U' B U B' U'");
+                    rotateCube("B U B' U'");
                 }                
             }
         }
-        if(topSide[2][0] == white)
+        else if(topSide[2][0] == white)
         {    
             if(downSide[0][0] != white)
             {
@@ -224,25 +243,312 @@ void RubiksCube::firstLayerStages()
             }
             else if(downSide[2][0] != white)
             {
+                rotateCube("U");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U L U L' U'");
+                    rotateCube("L U L' U'");
                 }                
             }
             else if(downSide[2][2] != white)
             {
+                rotateCube("U2");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U2 B U B' U'");
+                    rotateCube("B U B' U'");
                 }                
             }        
             else if(downSide[0][2] != white)
             {
+                rotateCube("U'");
                 for (int i = 0; i < 3; i++)
                 {
-                    rotateCube("U' R U R' U'");
+                    rotateCube("R U R' U'");
                 }                
             }
         }
     }
+    if(frontSide[2][2] == white || rightSide[2][0] == white)
+    {
+        if(frontSide[2][2] == white)
+        {
+            for(int i = 0; i < 4;i++)
+            {
+                rotateCube("R U R' U'");
+            }
+        }
+        else if(rightSide[2][0] == white)
+        {
+            for(int i = 0; i < 2;i++)
+            {
+                rotateCube("R U R' U'");
+            }
+        }
+    }
+    if(rightSide[2][2] == white || backSide[2][2] == white)
+    {
+        if(rightSide[2][2] == white)
+        {
+            for(int i = 0; i < 4;i++)
+            {
+                rotateCube("B U B' U'");
+            }
+        }
+        else if(backSide[2][2] == white)
+        {
+            for(int i = 0; i < 2;i++)
+            {
+                rotateCube("B U B' U'");
+            }
+        }
+    }
+    if(backSide[2][0] == white || leftSide[2][0] == white)
+    {
+        if(backSide[2][0] == white)
+        {
+            for(int i = 0; i < 4;i++)
+            {
+                rotateCube("L U L' U'");
+            }
+        }
+        else if(leftSide[2][0] == white)
+        {
+            for(int i = 0; i < 2;i++)
+            {
+                rotateCube("L U L' U'");
+            }
+        }
+    }
+    if(leftSide[2][2] == white || frontSide[2][0] == white)
+    {
+        if(leftSide[2][2] == white)
+        {
+            for(int i = 0; i < 4;i++)
+            {
+                rotateCube("F U F' U'");
+            }
+        }
+        else if(frontSide[2][0] == white)
+        {
+            for(int i = 0; i < 2;i++)
+            {
+                rotateCube("F U F' U'");
+            }
+        }
+    }
+    if(frontSide[0][2] == white || rightSide[0][0] == white || rightSide[0][2] == white || backSide[0][2] == white || backSide[0][0] == white || leftSide[0][0] == white || leftSide[0][2] == white || frontSide[0][0] == white)
+    {
+        if(frontSide[0][2] == white)
+        {
+            if(downSide[0][2] != white)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("R U R' U'");
+                }                
+            }
+            else if(downSide[2][2] != white)
+            {
+                rotateCube("U'");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("B U B' U'");
+                }                
+            }
+            else if(downSide[2][0] != white)
+            {
+                rotateCube("U2");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("L U L' U'");
+                }                
+            }
+            else if(downSide[0][0] != white)
+            {
+                rotateCube("U");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("F U F' U'");
+                }                
+            }
+        }
+        else if(rightSide[0][0] == white)
+        {
+            if(downSide[0][2] != white)
+            {
+                rotateCube("R U R' U'");            
+            }
+            else if(downSide[2][2] != white)
+            {
+                rotateCube("U' B U B' U'");
+            }
+            else if(downSide[2][0] != white)
+            {
+                rotateCube("U2 L U L' U'");
+            }
+            else if(downSide[0][0] != white)
+            {
+                rotateCube("U F U F' U'");
+            }
+        }
+        else if(rightSide[0][2] == white)
+        {
+            if(downSide[2][2] != white)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("B U B' U'");
+                }                
+            }
+            else if(downSide[2][0] != white)
+            {
+                rotateCube("U'");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("L U L' U'");
+                }                
+            }
+            else if(downSide[0][0] != white)
+            {
+                rotateCube("U2");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("F U F' U'");
+                }                
+            }            
+            else if(downSide[0][2] != white)
+            {
+                rotateCube("U");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("R U R' U'");
+                }                
+            }
+        }
+        else if(backSide[0][2] == white)
+        {            
+            if(downSide[2][2] != white)
+            {
+                rotateCube("B U B' U'");
+            }
+            else if(downSide[2][0] != white)
+            {
+                rotateCube("U' L U L' U'");
+            }
+            else if(downSide[0][0] != white)
+            {
+                rotateCube("U2 F U F' U'");
+            }
+            if(downSide[0][2] != white)
+            {
+                rotateCube("U R U R' U'");            
+            }
+        }
+        else if(backSide[0][0] == white)
+        {
+            if(downSide[2][0] != white)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("L U L' U'");
+                }                
+            }
+            else if(downSide[0][0] != white)
+            {
+                rotateCube("U'");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("F U F' U'");
+                }                
+            }            
+            else if(downSide[0][2] != white)
+            {
+                rotateCube("U2");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("R U R' U'");
+                }                
+            }            
+            else if(downSide[2][2] != white)
+            {
+                rotateCube("U");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("B U B' U'");
+                }                
+            }
+        }
+        else if(leftSide[0][0] == white)
+        {    
+            if(downSide[2][0] != white)
+            {
+                rotateCube("L U L' U'");
+            }
+            else if(downSide[0][0] != white)
+            {
+                rotateCube("U' F U F' U'");
+            }
+            if(downSide[0][2] != white)
+            {
+                rotateCube("U2 R U R' U'");            
+            }        
+            else if(downSide[2][2] != white)
+            {
+                rotateCube("U B U B' U'");
+            }
+        }
+        else if(leftSide[0][2] == white)
+        {
+            if(downSide[0][0] != white)
+            {
+                rotateCube("U'");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("F U F' U'");
+                }                
+            }            
+            else if(downSide[0][2] != white)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("R U R' U'");
+                }                
+            }            
+            else if(downSide[2][2] != white)
+            {
+                rotateCube("U2");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("B U B' U'");
+                }                
+            }
+            else if(downSide[2][0] != white)
+            {
+                rotateCube("U");
+                for (int i = 0; i < 5; i++)
+                {
+                    rotateCube("L U L' U'");
+                }                
+            }
+        }
+        else if(frontSide[0][0] == white)
+        {  
+            if(downSide[0][0] != white)
+            {
+                rotateCube("F U F' U'");
+            }
+            if(downSide[0][2] != white)
+            {
+                rotateCube("U' R U R' U'");            
+            }        
+            else if(downSide[2][2] != white)
+            {
+                rotateCube("U2 B U B' U'");
+            }              
+            if(downSide[2][0] != white)
+            {
+                rotateCube("U L U L' U'");
+            }
+        }
+    }
+    
 }

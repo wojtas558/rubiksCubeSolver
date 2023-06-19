@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     RubiksCube cube;  
-    cube.rotateCube("B2 D' L' R2 F U2 F2 U' R2 B L D2");
+    cube.rotateCube("D U' F L R B2 U2 D F B R2 U2");
     cube.showCube();
     getch();
     cube.solveCube();

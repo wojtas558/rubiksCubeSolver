@@ -1,4 +1,5 @@
 #include "class.h"
+#include <conio.h> 
 using namespace std;
 
 string RubiksCube::showTile(int color)
@@ -139,5 +140,8 @@ RubiksCube::RubiksCube(int front, int top)
 void RubiksCube::solveCube()
 {
     makeWhiteCross();
+    showCube();
+    getch();
+    makeFirstLayer();
     return;
 }
