@@ -19,6 +19,7 @@ void RubiksCube::makeFirstLayer()
         // showCube();
         // Sleep(1500);
     }
+    return;
 }
 
 void RubiksCube::firstLayerStages()

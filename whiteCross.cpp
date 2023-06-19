@@ -227,7 +227,7 @@ void RubiksCube::whiteCrossStages()
             }
         }
     }
-    if(frontSide[1][0] == white || frontSide[0][1] == white || frontSide[1][2] == white)
+    if(frontSide[1][0] == white || frontSide[0][1] == white || frontSide[1][2] == white || frontSide[2][1] == white)
     {
         if(frontSide[1][0] == white)
         {
@@ -241,8 +241,12 @@ void RubiksCube::whiteCrossStages()
         {
             rotateCube("R U R'");
         }
+        else if(frontSide[2][1] == white)
+        {
+            rotateCube("F");
+        }
     }
-    if(rightSide[1][0] == white || rightSide[0][1] == white || rightSide[1][2] == white)
+    if(rightSide[1][0] == white || rightSide[0][1] == white || rightSide[1][2] == white || rightSide[2][1] == white)
     {
         if(rightSide[1][0] == white)
         {
@@ -256,8 +260,12 @@ void RubiksCube::whiteCrossStages()
         {
             rotateCube("B U B'");
         }
+        else if(rightSide[2][1] == white)
+        {
+            rotateCube("R");
+        }
     }
-    if(backSide[1][0] == white || backSide[0][1] == white || backSide[1][2] == white)
+    if(backSide[1][0] == white || backSide[0][1] == white || backSide[1][2] == white || backSide[2][1] == white)
     {
         if(backSide[1][0] == white)
         {
@@ -271,8 +279,12 @@ void RubiksCube::whiteCrossStages()
         {
             rotateCube("R' U R");
         }
+        else if(backSide[2][1] == white)
+        {
+            rotateCube("B");
+        }
     }
-    if(leftSide[1][0] == white || leftSide[0][1] == white || leftSide[1][2] == white)
+    if(leftSide[1][0] == white || leftSide[0][1] == white || leftSide[1][2] == white || leftSide[2][1] == white)
     {
         if(leftSide[1][0] == white)
         {
@@ -285,6 +297,10 @@ void RubiksCube::whiteCrossStages()
         else if(leftSide[1][2] == white)
         {
             rotateCube("F U F'");
+        }
+        else if(leftSide[2][1] == white)
+        {
+            rotateCube("L");
         }
     }
     

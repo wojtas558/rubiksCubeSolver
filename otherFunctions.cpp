@@ -1,5 +1,6 @@
 #include "class.h"
 #include <conio.h> 
+#include <string>
 using namespace std;
 
 string RubiksCube::showTile(int color)
@@ -36,7 +37,7 @@ string RubiksCube::showTile(int color)
     
     return "";
 }
-
+//poprawic na voida i oddzielne couty myslnikow
 void RubiksCube::showCube()
 {
     for(int i = 0;i < 3;i++)
@@ -143,5 +144,10 @@ void RubiksCube::solveCube()
     showCube();
     getch();
     makeFirstLayer();
+    showCube();
+    getch();
+    makeSecondLayer();
+    showCube();
+    getch();
     return;
 }

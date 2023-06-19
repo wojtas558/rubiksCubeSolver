@@ -21,7 +21,7 @@ private:
     void F(), Fprim();
     void U(), Uprim();
     void B(), Bprim();
-    void D(), Dprim();
+    void D(), Dprim();  
 
     bool bluePiece, redPiece, greenPiece, orangePiece;
     void makeWhiteCross();
@@ -29,6 +29,8 @@ private:
 
     void makeFirstLayer();
     void firstLayerStages();
+
+    void makeSecondLayer();
 public:
     RubiksCube(int front = blue, int top = yellow);
     void showCube();
