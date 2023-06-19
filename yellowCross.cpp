@@ -1,5 +1,5 @@
 #include "class.h"
-#include <windows.h>
+#include <conio.h>
 using namespace std;
 
 void RubiksCube::makeYellowCross()
@@ -28,5 +28,39 @@ void RubiksCube::makeYellowCross()
 
 void RubiksCube::permuteYellowCross()
 {
-
+    int rotations = 0;
+    while(true)
+    {   
+        // cout << rotations;
+        // showCube();
+        // getch();
+        if(frontSide[0][1] == blue && rightSide[0][1] == red && backSide[0][1] && leftSide[0][1] == orange)
+            return;
+        if(backSide[0][1] == green && rightSide[0][1] == red)
+        {
+            rotateCube("U' R U2 R' U' R U' R'");
+            return;
+        }
+        if(rightSide[0][1] == red && frontSide[0][1] == blue)
+        {
+            rotateCube("U' F U2 F' U' F U' F'");
+            return;
+        }
+        if(frontSide[0][1] == blue && leftSide[0][1] == orange)
+        {
+            rotateCube("U' L U2 L' U' L U' L'");
+            return;
+        }
+        if(leftSide[0][1] == orange && backSide[0][1] == green)
+        {
+            rotateCube("U' B U2 B' U' B U' B'");
+            return;
+        }
+        rotateCube("U");
+        rotations++;
+        if(rotations == 3)
+            rotateCube("U' R U2 R' U' R U' R'");
+    }
+    cout << "yellow cross permutation error";
+    return;
 }
