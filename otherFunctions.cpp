@@ -141,20 +141,13 @@ RubiksCube::RubiksCube(int front, int top)
 void RubiksCube::solveCube()
 {
     makeWhiteCross();
-    showCube();
-    getch();
     makeFirstLayer();
-    showCube();
-    getch();
     makeSecondLayer();
-    showCube();
-    getch();
     makeYellowCross();
-    showCube();
-    getch();
     permuteYellowCross();
-    showCube();
-    getch();
     permuteYellowCorners();
+    rotateYellowCorners();
+    // showCube();
+    // getch();
     return;
 }

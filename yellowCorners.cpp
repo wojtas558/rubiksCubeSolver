@@ -23,9 +23,6 @@ void RubiksCube::permuteYellowCorners()
 {
     while(true)
     {
-        showCube();
-        getch();
-        cout << "elo";
         if(checkCorners())
             return;
         if(checkCorners(1))
@@ -41,3 +38,57 @@ void RubiksCube::permuteYellowCorners()
     }
 }
 
+void RubiksCube::rotateYellowCorners()
+{
+    int controlSum;
+    if(topSide[0][0] == yellow)
+        controlSum++;
+    if(topSide[0][2] == yellow)
+        controlSum++;
+    if(topSide[2][0] == yellow)
+        controlSum++;
+    if(topSide[2][2] == yellow)
+        controlSum++;
+    if(controlSum == 4)
+        return;
+    if(leftSide[0][2] == yellow)
+    {
+        for(int i = 0;i < 2;i++)
+            rotateCube("L D L' D'");
+    }
+    else if(frontSide[0][0] == yellow)
+    {
+        for(int i = 0;i < 4;i++)
+            rotateCube("L D L' D'");
+    }
+    if(frontSide[0][2] == yellow)
+    {
+        for(int i = 0;i < 2;i++)
+            rotateCube("U L D L' D' U'");
+    }
+    else if(rightSide[0][0] == yellow)
+    {
+        for(int i = 0;i < 4;i++)
+            rotateCube("U L D L' D' U'");
+    }
+    if(rightSide[0][2] == yellow)
+    {
+        for(int i = 0;i < 2;i++)
+            rotateCube("U2 L D L' D' U2");
+    }
+    else if(backSide[0][2] == yellow)
+    {
+        for(int i = 0;i < 4;i++)
+            rotateCube("U2 L D L' D' U2");
+    }
+    if(backSide[0][0] == yellow)
+    {
+        for(int i = 0;i < 2;i++)
+            rotateCube("U' L D L' D' U");
+    }
+    else if(leftSide[0][0] == yellow)
+    {
+        for(int i = 0;i < 4;i++)
+            rotateCube("U' L D L' D' U");
+    }
+}
