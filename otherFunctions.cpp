@@ -1,5 +1,5 @@
 #include "class.h"
-#include <conio.h> 
+#include <windows.h>
 #include <string>
 using namespace std;
 
@@ -8,28 +8,28 @@ string RubiksCube::showTile(int color)
     switch(color)
     {
         case white:
-            printf("%c[%dm#", 0x1B, 37);
-            
+            wprintf(L"%c[%d;2;255;255;255m#", 0x1B, 38);//zmienic na jedna funkcje z kolorkiem rgb jako argument
+            wprintf(L"%c[%dm", 0x1B, 39);
             break;  
         case blue:
-            printf("%c[%dm#", 0x1B, 36);
-            printf("%c[%dm", 0x1B, 39);
+            wprintf(L"%c[%dm#", 0x1B, 36);
+            wprintf(L"%c[%dm", 0x1B, 39);
             break;
         case red:
-            printf("%c[%d;2;255;0;0m#", 0x1B, 38);//zmienic na jedna funkcje z kolorkiem rgb jako argument
-            printf("%c[%dm", 0x1B, 39);
+            wprintf(L"%c[%d;2;255;0;0m#", 0x1B, 38);//zmienic na jedna funkcje z kolorkiem rgb jako argument
+            wprintf(L"%c[%dm", 0x1B, 39);
             break;
         case green:
-            printf("%c[%dm#", 0x1B, 32);
-            printf("%c[%dm", 0x1B, 39);
+            wprintf(L"%c[%dm#", 0x1B, 32);
+            wprintf(L"%c[%dm", 0x1B, 39);
             break;
         case orange:        
-            printf("%c[%dm#", 0x1B, 34);
-            printf("%c[%dm", 0x1B, 39);
+            wprintf(L"%c[%d;2;255;103;0m#", 0x1B, 38);//zmienic na jedna funkcje z kolorkiem rgb jako argument
+            wprintf(L"%c[%dm", 0x1B, 39);
             break;
         case yellow:
-            printf("%c[%dm#", 0x1B, 33);
-            printf("%c[%dm", 0x1B, 39);
+            wprintf(L"%c[%dm#", 0x1B, 33);
+            wprintf(L"%c[%dm", 0x1B, 39);
             break;   
         default:
             cout << "#";
@@ -68,6 +68,7 @@ void RubiksCube::showCube()
         cout << showTile(backSide[i][0]) << "-" << showTile(backSide[i][1]) << "-" << showTile(backSide[i][2]);        
         cout << endl;
     }        
+    cout << endl;
 
     return;
 }
@@ -133,7 +134,25 @@ void RubiksCube::setCubeToSolved(int front, int top)
 
 
 RubiksCube::RubiksCube(int front, int top)
-{
+{    
+    //this code allows to show colors in cmd is
+    //and its copied from
+//https://learn.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences#example-of-enabling-virtual-terminal-processing
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hOut == INVALID_HANDLE_VALUE)
+    {
+        cout << GetLastError();
+    }
+    DWORD dwMode = 0;
+    if (!GetConsoleMode(hOut, &dwMode))
+    {
+        cout << GetLastError();
+    }
+    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    if (!SetConsoleMode(hOut, dwMode))
+    {
+        cout <<  GetLastError();
+    }
     setCubeToSolved(front, top);
     return;
 }
@@ -146,7 +165,7 @@ void RubiksCube::solveCube()
     makeYellowCross();
     permuteYellowCross();
     permuteYellowCorners();
-    rotateYellowCorners();
+    rotateYellowCornersWithoutDMove();
     // showCube();
     // getch();
     return;

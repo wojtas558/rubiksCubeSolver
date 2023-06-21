@@ -1,14 +1,24 @@
 #include <iostream>
 #include <conio.h> 
+#include <string>
 #include "class.h"
 using namespace std;
 
 int main()
 {
     RubiksCube cube;  
-    cube.rotateCube("B' L R D B' R B L2 R F2 D' B'");
     // getch();
-    cube.solveCube();
-    cube.showCube();
+    string scramble = "";
+    while(scramble != "x")
+    {
+        getline(cin, scramble);
+        system("cls");
+        cube.rotateCube(scramble);
+        cube.showCube();
+        getch();
+        system("cls");
+        cube.solveCube();
+        cube.showCube();
+    }
     getch();return 0;
 }

@@ -92,3 +92,113 @@ void RubiksCube::rotateYellowCorners()
             rotateCube("U' L D L' D' U");
     }
 }
+
+void RubiksCube::doCornerMove()
+{
+    if(frontSide[0][2] == yellow)
+        rotateCube("F R' U R U' R' U R U' F' U R' U' R U R' U' R");
+    if(rightSide[0][0] == yellow)
+        rotateCube("R' U R U' R' U R U' F U R' U' R U R' U' R F'");
+    return;
+}
+
+void RubiksCube::rotateYellowCornersWithoutDMove()
+{
+    int controlSum = 0;
+    if(topSide[0][0] == yellow)
+        controlSum++;
+    if(topSide[0][2] == yellow)
+        controlSum++;
+    if(topSide[2][0] == yellow)
+        controlSum++;
+    if(topSide[2][2] == yellow)
+        controlSum++;
+    if(controlSum == 0)
+    {
+        doCornerMove();
+        controlSum = 0;
+        if(topSide[0][0] == yellow)
+            controlSum++;
+        if(topSide[0][2] == yellow)
+            controlSum++;
+        if(topSide[2][0] == yellow)
+            controlSum++;
+        if(topSide[2][2] == yellow)
+            controlSum++;
+    }
+    if(controlSum == 1)
+    {
+        if(topSide[2][2] == yellow)
+        {
+            rotateCube("U'");
+            doCornerMove();
+            rotateCube("U");
+            controlSum = 2;
+        }
+        else if(topSide[0][2] == yellow) 
+        {
+            doCornerMove();
+            controlSum = 2;
+        }
+        else if(topSide[0][0] == yellow)
+        {
+            rotateCube("U");
+            doCornerMove();
+            rotateCube("U'");
+            controlSum = 2;
+        }       
+        else if(topSide[2][0] == yellow)
+        {
+            rotateCube("U2");
+            doCornerMove();
+            rotateCube("U2");
+            controlSum = 2;
+        }
+    }
+    if(controlSum == 2)
+    {
+        if(topSide[2][0] != yellow && topSide[2][2] != yellow)
+        {
+            doCornerMove();
+            controlSum = 4;
+        }
+        else if(topSide[2][2] != yellow && topSide[0][2] != yellow)
+        {
+            rotateCube("U");
+            doCornerMove();
+            rotateCube("U'");
+            controlSum = 4;
+        }
+        else if(topSide[0][2] != yellow && topSide[0][0] != yellow)
+        {
+            rotateCube("U2");
+            doCornerMove();
+            rotateCube("U2");
+            controlSum = 4;
+        }
+        else if(topSide[0][0] != yellow && topSide[2][0] != yellow)
+        {
+            rotateCube("U'");
+            doCornerMove();
+            rotateCube("U");
+            controlSum = 4;
+        }
+        else if(topSide[0][0] != yellow && topSide[2][2] != yellow)
+        {
+            rotateCube("L");
+            doCornerMove();
+            rotateCube("L'");
+            controlSum = 4;
+        }
+        else if(topSide[0][2] != yellow && topSide[2][0] != yellow)
+        {
+            rotateCube("U L");
+            doCornerMove();
+            rotateCube("L' U'");
+            controlSum = 4;
+        }
+    }
+    if(controlSum == 4)
+        return;
+    cout << "Rotating yellow corner error" << endl;
+}

@@ -24,19 +24,18 @@ private:
     void D(), Dprim();  
 
     bool bluePiece, redPiece, greenPiece, orangePiece;
+    bool checkCorners(int corner = 0);
+    
     void makeWhiteCross();
-    void whiteCrossStages();
-
     void makeFirstLayer();
-    void firstLayerStages();
-
     void makeSecondLayer();
-
     void makeYellowCross();
     void permuteYellowCross();
-    bool checkCorners(int corner = 0);
     void permuteYellowCorners();
     void rotateYellowCorners();
+
+    void doCornerMove();
+    void rotateYellowCornersWithoutDMove();
 public:
     RubiksCube(int front = blue, int top = yellow);
     void showCube();
